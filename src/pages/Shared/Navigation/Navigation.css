@@ -1,0 +1,18 @@
+.logo-title{
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    
+}
+
+@media only screen and (max-width: 1000px) {
+   body {
+    background: red;
+   }
+ 
+   .search{
+       order: 4;
+       width: 90% !important;
+       
+   }
+}

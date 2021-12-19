@@ -8,7 +8,7 @@ const TopNav = () => {
                 <Container className='menu-container'>
                     <Navbar.Brand href="#home">
                         <h3 className="d-flex align-items-center logo-title">
-                            <span className="title">Best</span>Mart+</h3>
+                            <span className="">Best</span>Mart+</h3>
                     </Navbar.Brand>
                     <Form className="d-flex m-auto w-50 search">
                         <FormControl

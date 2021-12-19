@@ -1,0 +1,6 @@
+.sub-banner-item img{
+    transition: all 0.3s;
+}
+.sub-banner-item:hover img{
+    transform: scale(1.05)
+}

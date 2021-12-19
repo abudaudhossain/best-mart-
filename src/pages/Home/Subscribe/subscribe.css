@@ -1,0 +1,14 @@
+.subscribe{
+    display: inline-block;
+    padding: 10px 30px;
+    background: rgb(16, 8, 90);
+    color: white;
+    font-size: 18px;
+    border-radius: 50px;
+    
+}
+.email-filed{
+    border-radius: 50px;
+    font-size: 18px;
+    padding: 5px 30px;
+}

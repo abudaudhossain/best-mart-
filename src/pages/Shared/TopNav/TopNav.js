@@ -36,7 +36,7 @@ const TopNav = () => {
                     Signed in as: <Link to="/login">{user.displayName}</Link>
                 </Navbar.Text> */}
                         <Nav.Link style={{ color: "white" , textAlign: "center"}} className="position-relative">
-                           <i class="fas fa-shopping-cart" style={{fontSize: "32px", display: "block" }}></i> <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">99</span>
+                           <i className="fas fa-shopping-cart" style={{fontSize: "32px", display: "block" }}></i> <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">99</span>
                         </Nav.Link>
                         
                     </Nav>

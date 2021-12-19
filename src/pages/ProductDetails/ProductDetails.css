@@ -1,0 +1,20 @@
+.color-gold{
+    color: rgb(243, 212, 39);
+}
+.my-btn{
+    color: #7ac400;
+	font-size: 16px;
+	text-transform: uppercase;
+	/* font-weight: bold; */
+	background: none;
+	border: 1px solid #7ac400;
+	padding: 6px 14px;
+	/* margin-top: 5px; */
+	line-height: 16px;
+	border-radius: 20px;
+}
+.my-btn:hover{
+    color: #fff;
+	background: #7ac400;
+	box-shadow: none;
+}

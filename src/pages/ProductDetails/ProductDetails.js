@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Rating from 'react-rating';
+import { Link } from 'react-router-dom';
 import "./ProductDetails.css"
 
 const ProductDetails = () => {
@@ -44,9 +45,9 @@ const ProductDetails = () => {
                                 <button onClick={increasesQuantity} className="my-btn m-2"> + </button>
                                 <button onClick={decreasesQuantity} className="my-btn m-2"> - </button>
                             </p>
-                            <button className="my-btn m-2 px-4">Add to Cart</button>
-                            <button className="my-btn m-2 px-4">Buy it Now</button>
-                            <button className="my-btn m-2 px-4">Shipping Continue</button>
+                            <Link to="/cart" className="my-btn m-2 px-4">Add to Cart</Link>
+                            <Link to="/order" className="my-btn m-2 px-4">Buy it Now</Link>
+                            <Link to="/home" className="my-btn m-2 px-4">Shipping Continue</Link>
                         </div>
                     </Col>
                 </Row>

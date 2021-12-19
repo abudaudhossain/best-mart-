@@ -3,7 +3,7 @@ import {Form, FormControl } from 'react-bootstrap';
 import './subscribe.css'
 const Subscribe = () => {
     return (
-        <section className="subscription text-center py-5">
+        <section className="subscription text-center py-5" style={{background:"#F5F5F5"}}>
             <h4>SUBSCRIBE TO OUR NEWSLETTER</h4>   
             <p >Get the latest updates on new products and upcoming sales</p> 
             <form>

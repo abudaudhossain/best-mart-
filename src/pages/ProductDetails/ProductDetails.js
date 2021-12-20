@@ -29,7 +29,7 @@ const ProductDetails = () => {
                                 readonly
 
                                 fullSymbol={[<i className="color-gold fas fa-star"></i>]}
-                                emptySymbol={[<i class="far fa-star"></i>]}
+                                emptySymbol={[<i className="far fa-star"></i>]}
                             />
                             <small className="px-2"> Review</small>
                         </div>

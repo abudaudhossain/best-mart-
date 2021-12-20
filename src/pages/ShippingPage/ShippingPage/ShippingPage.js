@@ -1,18 +1,21 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import CartItem from '../CartItem/CartItem';
+import Address from '../Address/Address';
 
-const Cart = () => {
-
+const ShippingPage = () => {
     return (
-        <section className="cart">
+        <section className="shipping-page">
             <Container>
                 <Row>
                     <Col sm={12} md={8}>
-                        <CartItem />
-                        <CartItem />
-                        <CartItem />
+                        <div>
+                            <h3>Conform Your Information</h3>
+                            <Address />
+                        </div>
+                        <div>
+                            <h2>Payment method</h2>
+                        </div>
                     </Col>
                     <Col sm={12} md={4}>
                         <div className="border my-5">
@@ -34,8 +37,8 @@ const Cart = () => {
                                 <h5>98</h5>
                             </div>
                         </div>
-                            <Link to="/shippingPage" className="my-btn m-2">Go to shipping Page</Link>
-                            <Link to="/home" className="my-btn m-2">Continue Shopping</Link>
+                        {/* <button to="/shippingPage" className="my-btn m-2">Order</button> */}
+                        <Link to="/home" className="my-btn m-2">Continue Shopping</Link>
                     </Col>
                 </Row>
             </Container>`
@@ -43,4 +46,4 @@ const Cart = () => {
     );
 };
 
-export default Cart;
+export default ShippingPage;

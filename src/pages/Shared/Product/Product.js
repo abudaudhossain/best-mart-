@@ -23,7 +23,7 @@ const Product = () => {
                         readonly
                         
                         fullSymbol={[ <i className="color-gold fas fa-star"></i>]}
-                        emptySymbol={[<i class="far fa-star"></i>]}
+                        emptySymbol={[<i className="far fa-star"></i>]}
                        />
                 </div>
             </Link>

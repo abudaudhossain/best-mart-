@@ -5,6 +5,7 @@ import Navigation from './pages/Shared/Navigation/Navigation';
 import Footer from './pages/Shared/Footer/Footer';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
 import Cart from './pages/Cart/Cart/Cart';
+import ShippingPage from './pages/ShippingPage/ShippingPage/ShippingPage';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/productDetails" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/shippingPage" element={<ShippingPage />} />
         </Routes>
         <Footer/>
       </BrowserRouter>,

@@ -6,11 +6,12 @@ import Footer from './pages/Shared/Footer/Footer';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
 import Cart from './pages/Cart/Cart/Cart';
 import ShippingPage from './pages/ShippingPage/ShippingPage/ShippingPage';
+import AuthProvider from './context/AuthProvider';
 
 
 function App() {
   return (
-    <div className="App">
+    <AuthProvider>
       <BrowserRouter>
       <Navigation/>
         <Routes>
@@ -22,7 +23,7 @@ function App() {
         </Routes>
         <Footer/>
       </BrowserRouter>,
-    </div>
+    </AuthProvider>
   );
 }
 

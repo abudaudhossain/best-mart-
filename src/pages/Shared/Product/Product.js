@@ -1,15 +1,24 @@
 import React from 'react';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
+import localeDB from '../../../utilities/localeDB';
 import "./product.css"
+// import useProducts from "../../../hooks/useProducts"
+
 
 const Product = ({name, product}) => {
+    const {addStorage, getAllProductQuantity} = localeDB();
+    const {setQuantity} = useAuth();
+   
     if(!product){
         return <h2>loading</h2>
     }
     // const [name, img, star] = product;
-    const addToCart = () => {
-        console.log("add product");
+    const addToCart = (id) => {
+    
+       addStorage(id);
+       setQuantity(getAllProductQuantity());
 
     }
     return (
@@ -31,7 +40,7 @@ const Product = ({name, product}) => {
                        />
                 </div>
             </Link>
-            <button onClick={addToCart} className="btn btn-primary">Add to Cart</button>
+            <button onClick={() =>addToCart(product._id)} className="btn btn-primary">Add to Cart</button>
         </div>
     );
 };

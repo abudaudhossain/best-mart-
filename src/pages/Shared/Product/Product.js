@@ -3,7 +3,11 @@ import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 import "./product.css"
 
-const Product = () => {
+const Product = ({name, product}) => {
+    if(!product){
+        return <h2>loading</h2>
+    }
+    // const [name, img, star] = product;
     const addToCart = () => {
         console.log("add product");
 
@@ -13,13 +17,13 @@ const Product = () => {
             <Link to="/productDetails">
                 <span className="wish-icon"><i className="fa fa-heart-o"></i></span>
                 <div className="img-box">
-                    <img src="https://cdn.shopify.com/s/files/1/0064/4435/1539/products/product-laptop-2_9fd4acb2-8ad0-4a73-9461-f3f76ddbe8c5_360x.jpg?v=1616831599" className="img-fluid" alt="Macbook" />
+                    <img src={product.img} className="img-fluid" alt="Macbook" />
                 </div>
                 <div className="thumb-content">
-                    <h4>Matchbook Pro</h4>
-                    <p className="item-price"><strike>$1099.00</strike> <span>$869.00</span></p>
+                    <h4 title={name}>{name?.slice(0, 30)}...</h4>
+                    <p className="item-price"><strike>${product.priceFraction}</strike> <span>${product.price}</span></p>
                     <Rating
-                        initialRating={3}
+                        initialRating={product.star}
                         readonly
                         
                         fullSymbol={[ <i className="color-gold fas fa-star"></i>]}

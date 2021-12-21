@@ -1,9 +1,16 @@
-import React from 'react';
+import React ,{useEffect, useState}from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Product from '../../Shared/Product/Product';
 import "./Products.css"
 
 const Products = () => {
+    const [products, setProducts] = useState([]);
+    useEffect(() =>{
+      fetch("http://localhost:5000/products")
+      .then(req => req.json())
+      .then(data => setProducts(data));
+    },[])
+    console.log(products);
     return (
         <section className="Products py-5">
            <Container>

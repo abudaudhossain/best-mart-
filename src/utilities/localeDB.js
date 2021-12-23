@@ -1,20 +1,14 @@
 const localeDB = () => {
    
-    const addStorage = (value) => {
-        
+    const addStorage = (id, quantity = 1) => {
+        console.log(id, quantity)       
         let cart_item = {};
         let exitItem = getStorageData();
         console.log(getStorageData())
         if (exitItem) {
             cart_item = exitItem;
-            if (cart_item[value]) {
-
-                cart_item[value] += 1
-            }
-            else {
-                cart_item[value] = 1;
-
-            }
+           
+            cart_item[id] = quantity;
         }
 
         localStorage.setItem("addToCartProduct", JSON.stringify(cart_item));

@@ -22,12 +22,12 @@ const useProducts = () => {
 
     const {getAllProductQuantity} = localeDB();
     
-    const [quantity, setQuantity] = useState(getAllProductQuantity());
+    const [allProductsQuantity, setAllProductsQuantity] = useState(getAllProductQuantity());
     
   
 
 
-    return { products: products,productCategory:categories, quantity, setQuantity  }
+    return { products: products,productCategory:categories, allProductsQuantity, setAllProductsQuantity  }
 }
 
 export default useProducts;

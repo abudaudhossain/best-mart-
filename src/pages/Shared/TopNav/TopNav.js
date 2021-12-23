@@ -4,8 +4,8 @@ import useAuth from '../../../hooks/useAuth';
 
 
 const TopNav = () => {
-  const {quantity} = useAuth();
-  console.log(quantity)
+  const {allProductsQuantity} = useAuth();
+  console.log(allProductsQuantity)
   
    
     return (
@@ -42,7 +42,7 @@ const TopNav = () => {
                     Signed in as: <Link to="/login">{user.displayName}</Link>
                 </Navbar.Text> */}
                         <Nav.Link style={{ color: "white" , textAlign: "center"}} className="position-relative">
-                           <i className="fas fa-shopping-cart" style={{fontSize: "32px", display: "block" }}></i> <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">{quantity}</span>
+                           <i className="fas fa-shopping-cart" style={{fontSize: "32px", display: "block" }}></i> <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">{allProductsQuantity}</span>
                         </Nav.Link>
                         
                     </Nav>

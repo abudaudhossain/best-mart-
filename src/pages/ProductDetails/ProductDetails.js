@@ -1,31 +1,68 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Rating from 'react-rating';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+import localeDB from '../../utilities/localeDB';
 import "./ProductDetails.css"
 
 const ProductDetails = () => {
-    const [quantity, setQuantity] = useState(1);
+    const { id } = useParams();
+    const { addStorage, getAllProductQuantity, getStorageData } = localeDB();
+    const [CartProducts, setCartProducts] = useState(getStorageData())
+    const { setAllProductsQuantity } = useAuth();
+    const [product, setProduct] = useState(null);
+    const [quantity, setQuantity] = useState("1");
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/products/${id}`)
+            .then(res => res.json())
+            .then(data => setProduct(data));
+        if (CartProducts[id]) {
+            setQuantity(CartProducts[id])
+        };
+    }, [])
+
+    if (!product) {
+        return <h2>loading</h2>
+    }
+    const { img, name, star, price, category } = product;
+
+    const addToCart = (id) => {
+
+        addStorage(id, quantity);
+        setAllProductsQuantity(getAllProductQuantity());
+        setCartProducts(getStorageData());
+        setQuantity(CartProducts[id]);
+    }
+
+
     const increasesQuantity = () => {
-        setQuantity(quantity + 1);
+        setQuantity(parseInt(quantity) + 1);
+
     }
     const decreasesQuantity = () => {
         if (quantity > 1) {
             setQuantity(quantity - 1);
         }
     }
+    const handleQuantityFled = (e) => {
+        setQuantity(parseInt(e.target.value))
+    }
+
+
     return (
         <section className="product-details py-5">
             <Container >
                 <Row>
                     <Col sm={12} md={6}>
-                        <img src="https://cdn.shopify.com/s/files/1/0064/4435/1539/products/product-laptop-4.jpg?v=1616831015" className='img-thumbnail' alt="product-img" />
+                        <img src={img} className='img-thumbnail w-100' alt="product-img" />
                     </Col>
                     <Col sm={12} md={6}>
-                        <h3>Product Name</h3>
+                        <h3>{name}</h3>
                         <div>
                             <Rating
-                                initialRating={3}
+                                initialRating={star}
                                 readonly
 
                                 fullSymbol={[<i className="color-gold fas fa-star"></i>]}
@@ -35,19 +72,25 @@ const ProductDetails = () => {
                         </div>
                         <p>Vendor: Ella - Halothemes</p>
                         <p>SKU: KJSU-58436</p>
-                        <p>Availability: 10 In stock</p>
-                        <p>Product Type:</p>
-                        <h5>$89.00</h5>
+                        <p>Availability: {product.stock} In stock</p>
+                        <p>Product Type: {category}</p>
+                        <h5>${price}</h5>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum eius, doloremque rem alias odit nulla nobis soluta in eum ea, quos hic, obcaecati corrupti. Doloremque quo corporis dolores nesciunt quia.</p>
                         <div>
                             <p>Quantity:
-                                <input type="number" value={quantity} className='m-2' />
+                                <input id="quantity" type="number" value={quantity} className='m-2' onChange={handleQuantityFled} />
                                 <button onClick={increasesQuantity} className="my-btn m-2"> + </button>
                                 <button onClick={decreasesQuantity} className="my-btn m-2"> - </button>
                             </p>
-                            <Link to="/cart" className="my-btn m-2 px-4">Add to Cart</Link>
-                            <Link to="/order" className="my-btn m-2 px-4">Buy it Now</Link>
-                            <Link to="/home" className="my-btn m-2 px-4">Shipping Continue</Link>
+                            <Link to="/cart">
+                                <button onClick={() => addToCart(product._id)} className="my-btn">Add to Cart</button>
+                            </Link>
+                            <Link to="/order" className="m-2">
+                                <button className="my-btn  px-4 ">Buy it Now</button>
+                            </Link>
+                            <Link to="/home" className=" m-2">
+                                <button className="my-btn ps-4">Shipping Continue</button>
+                            </Link>
                         </div>
                     </Col>
                 </Row>

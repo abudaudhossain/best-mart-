@@ -1,7 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import localeDB from '../../../utilities/localeDB';
 
-const CartItem = () => {
-    const [quantity, setQuantity] = useState(1);
+const CartItem = ({ productId, setMyOrderProducts, myProducts }) => {
+    const { getStorageData } = localeDB();
+
+    const [product, setProduct] = useState(null);
+    const [quantity, setQuantity] = useState(getStorageData()[productId]);
+    const orderProducts = [...myProducts];
+ 
+    useEffect(() => {
+        fetch(`http://localhost:5000/products/${productId}`)
+            .then(res => res.json())
+            .then(data => setProduct(data));
+
+        setMyOrderProducts(...myProducts);
+
+    }, [quantity])
+
+
     const increasesQuantity = () => {
         setQuantity(quantity + 1);
     }
@@ -10,14 +26,41 @@ const CartItem = () => {
             setQuantity(quantity - 1);
         }
     }
+    if (!product) {
+        return <h1>loading</h1>
+    }
+    const { name, price, img } = product;
+
+
+    const orderProduct = {
+        productId,
+        quantity,
+        price,
+        totalPrice: price * quantity
+    }
+
+    const getItem = orderProducts.find(product => product.productId === productId)
+    if (!getItem) {
+        orderProducts.push(orderProduct);
+
+    } else {
+
+        orderProducts[orderProducts.indexOf(getItem)] = orderProduct;
+        console.log(getItem);
+
+    }
+
+
+
+
     return (
         <div className="d-flex justify-content-between align-items-center flex-wrap m-3 p-3 border">
             <div className="d-flex align-items-center">
                 <div style={{ width: "150px" }}>
-                    <img src="https://cdn.shopify.com/s/files/1/0064/4435/1539/products/product-laptop-4.jpg?v=1616831015" alt="product-img" className='img-fluid' />
+                    <img src={img} alt="product-img" className='img-fluid' />
                 </div>
                 <div className="mx-3">
-                    <h4>product name</h4>
+                    <h4 title={name}>{name.slice(0, 25)}</h4>
                     <h4>{quantity}
                         <button onClick={increasesQuantity} className="my-btn m-2"> + </button>
                         <button onClick={decreasesQuantity} className="my-btn m-2"> - </button>
@@ -27,15 +70,15 @@ const CartItem = () => {
 
             <div>
                 <h5>Price</h5>
-                <h5>$45.00</h5>
+                <h5>${price}</h5>
             </div>
 
             <div>
                 <h5>Total Price</h5>
-                <h5>$359.00</h5>
+                <h5>$ {price * quantity}</h5>
             </div>
         </div>
     );
 };
 
-export default CartItem;
+export default CartItem; 

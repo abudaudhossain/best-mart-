@@ -12,7 +12,7 @@ const ProductDetails = () => {
     const [CartProducts, setCartProducts] = useState(getStorageData())
     const { setAllProductsQuantity } = useAuth();
     const [product, setProduct] = useState(null);
-    const [quantity, setQuantity] = useState("1");
+    const [quantity, setQuantity] = useState(1);
 
     useEffect(() => {
         fetch(`http://localhost:5000/products/${id}`)

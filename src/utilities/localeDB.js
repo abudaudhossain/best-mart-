@@ -14,7 +14,7 @@ const localeDB = () => {
         localStorage.setItem("addToCartProduct", JSON.stringify(cart_item));
         console.log(getAllProductQuantity())
     }
-
+    
     const getStorageData = () => {
         const addedItems = localStorage.getItem("addToCartProduct");
         if (addedItems) {

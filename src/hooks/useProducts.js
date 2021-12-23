@@ -3,6 +3,7 @@ import localeDB from "../utilities/localeDB";
 
 const useProducts = () => {
     const [products, setProducts] = useState([]);
+    const [myOrderProducts, setMyOrderProducts] = useState([]);
     let productCategory = [];
     const categories = [];
 
@@ -27,7 +28,7 @@ const useProducts = () => {
   
 
 
-    return { products: products,productCategory:categories, allProductsQuantity, setAllProductsQuantity  }
+    return { products: products,productCategory:categories, allProductsQuantity, setAllProductsQuantity, myOrderProducts, setMyOrderProducts }
 }
 
 export default useProducts;

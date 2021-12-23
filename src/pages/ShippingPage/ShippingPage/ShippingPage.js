@@ -3,8 +3,10 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import OrderSummary from '../../Shared/OrderSummary/OrderSummary';
 import Address from '../Address/Address';
+// import useAuth from "../../../hooks/useAuth"
 
 const ShippingPage = () => {
+   
     return (
         <section className="shipping-page">
             <Container>
@@ -12,7 +14,7 @@ const ShippingPage = () => {
                     <Col sm={12} md={8}>
                         <div>
                             <h3>Conform Your Information</h3>
-                            <Address />
+                            <Address/>
                         </div>
                         <div>
                             <h2>Payment method</h2>

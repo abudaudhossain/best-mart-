@@ -1,31 +1,52 @@
 import React, { useEffect, useState } from 'react';
+import useAuth from '../../../hooks/useAuth';
 import localeDB from '../../../utilities/localeDB';
 
-const CartItem = ({ productId, setMyOrderProducts, myProducts }) => {
+const CartItem = ({ productId }) => {
     const { getStorageData } = localeDB();
-
+    const { myOrderProducts, setMyOrderProducts, setTotalOrderQuantity, totalOrderQuantity} = useAuth();
     const [product, setProduct] = useState(null);
     const [quantity, setQuantity] = useState(getStorageData()[productId]);
-    const orderProducts = [...myProducts];
- 
+    const orderProducts = [...myOrderProducts];
+
+    //================================================//
+    //=====Load product in server by product id=======//
+    //=================================================== 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${productId}`)
+        fetch(`https://bestmart.herokuapp.com/products/${productId}`)
             .then(res => res.json())
             .then(data => setProduct(data));
 
-        setMyOrderProducts(...myProducts);
+        setMyOrderProducts(orderProducts);
+        console.log("success", orderProducts);
+        
+        
 
     }, [quantity])
 
-
+    //========================================//
+    //===== increases product quantity =======//
+    //========================================// 
     const increasesQuantity = () => {
         setQuantity(quantity + 1);
+        setTotalOrderQuantity(totalOrderQuantity + 1)
+        orderProduct.quantity = quantity;
+        // console.log(orderProduct.quantity)
+
     }
+
+    //========================================//
+    //===== decrease product quantity =======//
+    //========================================// 
     const decreasesQuantity = () => {
         if (quantity > 1) {
             setQuantity(quantity - 1);
+            setTotalOrderQuantity(totalOrderQuantity - 1)
         }
     }
+    //========================================//
+    //===== create order product object =======//
+    //========================================// 
     if (!product) {
         return <h1>loading</h1>
     }
@@ -46,12 +67,9 @@ const CartItem = ({ productId, setMyOrderProducts, myProducts }) => {
     } else {
 
         orderProducts[orderProducts.indexOf(getItem)] = orderProduct;
-        console.log(getItem);
+        // console.log(getItem);
 
     }
-
-
-
 
     return (
         <div className="d-flex justify-content-between align-items-center flex-wrap m-3 p-3 border">
@@ -75,7 +93,7 @@ const CartItem = ({ productId, setMyOrderProducts, myProducts }) => {
 
             <div>
                 <h5>Total Price</h5>
-                <h5>$ {price * quantity}</h5>
+                <h5>$ {orderProduct.totalPrice}</h5>
             </div>
         </div>
     );

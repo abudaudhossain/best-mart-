@@ -7,21 +7,24 @@ import ProductDetails from './pages/ProductDetails/ProductDetails';
 import Cart from './pages/Cart/Cart/Cart';
 import ShippingPage from './pages/ShippingPage/ShippingPage/ShippingPage';
 import AuthProvider from './context/AuthProvider';
+// import DashBordHome from "./pages/DashBord/DashBordHome/DashBordHome";
 
 
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-      <Navigation/>
+        <Navigation />
+
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/productDetails/:id" element={<ProductDetails />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/shippingPage" element={<ShippingPage />} />
+          <Route path="/" >
+            <Route path="/home" element={<Home />} />
+            <Route path="/productDetails/:id" element={<ProductDetails />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/shippingPage" element={<ShippingPage />} />
+          </Route>
         </Routes>
-        <Footer/>
+        <Footer />
       </BrowserRouter>,
     </AuthProvider>
   );

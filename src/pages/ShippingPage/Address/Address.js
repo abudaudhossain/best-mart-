@@ -1,16 +1,38 @@
+import axios from 'axios';
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import localeDB from '../../../utilities/localeDB';
 
 const Address = () => {
     const { register, handleSubmit } = useForm();
     const OrderProducts = JSON.parse(sessionStorage.getItem("myOrderProducts"));
-    const { totalOrderQuantity, totalPrice, shippingCost } = useAuth();
-    const onSubmit = data => {
-        data.products = OrderProducts;
-        data.totalProducts = totalOrderQuantity;
-        data.totalCost = totalPrice + shippingCost;
-        console.log(data)
+    const { totalOrderQuantity, setAllProductsQuantity, totalPrice, shippingCost } = useAuth();
+    const { clearStorageData } = localeDB();
+    let navigate = useNavigate()
+
+    const onSubmit = orderInfo => {
+        orderInfo.products = OrderProducts;
+        orderInfo.totalProducts = totalOrderQuantity;
+        orderInfo.totalCost = totalPrice + shippingCost;
+
+        axios.post('https://bestmart.herokuapp.com/order', orderInfo)
+            .then(function (response) {
+
+
+                if (response.data.acknowledged) {
+                    alert("Your order successfully added")
+                    clearStorageData();
+                    setAllProductsQuantity(0);
+                    navigate("/");
+                }
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
     };
 
     return (

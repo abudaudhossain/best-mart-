@@ -31,8 +31,14 @@ const localeDB = () => {
        }
        return quantity;
     }
+
+    const clearStorageData = () =>{
+        localStorage.removeItem("addToCartProduct");
+        sessionStorage.removeItem("myOrderProducts");
+    }
+
    
-    return { addStorage, getStorageData, getAllProductQuantity }
+    return { addStorage, getStorageData, getAllProductQuantity, clearStorageData }
 }
 
 export default localeDB;

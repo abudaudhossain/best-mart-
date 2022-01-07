@@ -5,11 +5,13 @@ import localeDB from '../../../utilities/localeDB';
 import OrderSummary from '../../Shared/OrderSummary/OrderSummary';
 import CartItem from '../CartItem/CartItem';
 import useAuth from '../../../hooks/useAuth'
+import Navigation from '../../Shared/Navigation/Navigation';
+import Footer from '../../Shared/Footer/Footer';
 
 const Cart = () => {
     const { getStorageData } = localeDB();
     const cartProducts = Object.keys(getStorageData());
-    const { myOrderProducts, setMyOrderProducts,allProductsQuantity, setTotalOrderQuantity} = useAuth();
+    const { myOrderProducts, setMyOrderProducts, allProductsQuantity, setTotalOrderQuantity } = useAuth();
     const myProducts = [];
 
 
@@ -39,7 +41,7 @@ const Cart = () => {
         });
 
     }, [])
-   
+
 
     const hc = () => {
         console.log(myOrderProducts);
@@ -47,25 +49,29 @@ const Cart = () => {
     }
     // console.log(op)
     return (
-        <section className="cart">
-            <Container>
-                <Row>
-                    <Col sm={12} md={8}>
-                        {
-                            cartProducts.map(productId => <CartItem key={productId} productId={productId} />)
-                        }
-                    </Col>
-                    <Col sm={12} md={4}>
-                        <OrderSummary />
-                        <Link to="/shippingPage">
+        <>
+            <Navigation />
+            <section className="cart">
+                <Container>
+                    <Row>
+                        <Col sm={12} md={8}>
+                            {
+                                cartProducts.map(productId => <CartItem key={productId} productId={productId} />)
+                            }
+                        </Col>
+                        <Col sm={12} md={4}>
+                            <OrderSummary />
+                            <Link to="/shippingPage">
 
-                        <button to="" onClick={hc} className="my-btn m-2">Go to shipping Page</button>
-                        </Link>
-                        <Link to="/home" className="m-2"><button className="my-btn">Continue Shopping</button></Link>
-                    </Col>
-                </Row>
-            </Container>`
-        </section>
+                                <button to="" onClick={hc} className="my-btn m-2">Go to shipping Page</button>
+                            </Link>
+                            <Link to="/home" className="m-2"><button className="my-btn">Continue Shopping</button></Link>
+                        </Col>
+                    </Row>
+                </Container>`
+            </section>
+            <Footer />
+        </>
     );
 };
 

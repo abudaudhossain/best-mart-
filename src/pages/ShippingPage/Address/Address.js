@@ -8,7 +8,7 @@ import localeDB from '../../../utilities/localeDB';
 const Address = () => {
     const { register, handleSubmit } = useForm();
     const OrderProducts = JSON.parse(sessionStorage.getItem("myOrderProducts"));
-    const { totalOrderQuantity, setAllProductsQuantity, totalPrice, shippingCost } = useAuth();
+    const { totalOrderQuantity, setAllProductsQuantity, totalPrice, shippingCost } = useAuth().ProductsInfo;
     const { clearStorageData } = localeDB();
     let navigate = useNavigate()
 
@@ -17,7 +17,7 @@ const Address = () => {
         orderInfo.totalProducts = totalOrderQuantity;
         orderInfo.totalCost = totalPrice + shippingCost;
 
-        axios.post('https://bestmart.herokuapp.com/order', orderInfo)
+        axios.post('http://localhost:5000/order', orderInfo)
             .then(function (response) {
 
 

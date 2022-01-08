@@ -11,6 +11,7 @@ import Users from './pages/DashBoard/Users/Users';
 import Orders from './pages/DashBoard/Orders/Orders';
 import Category from './pages/DashBoard/Category/Category';
 import ManagesProducts from './pages/DashBoard/ManageProducts/ManagesProducts';
+import LogIn from './pages/LogIn/Login/LogIn';
 
 
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/productDetails/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/shippingPage" element={<ShippingPage />} />
+          <Route path="login" element={<LogIn />} />
           <Route path="/dashboard" element={<DashBoard />}>
             <Route path="*" element={<DashBoardHome />} />
             <Route path="orders" element={<Orders />} />

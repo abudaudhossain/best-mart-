@@ -12,7 +12,7 @@ import useAuth from '../../../hooks/useAuth';
 
 const Products = () => {
 
-  const {products,productCategory} = useAuth();
+  const {products,productCategory} = useAuth().ProductsInfo;
   // const products = getData.products;
 
   if (products.length < 1) {

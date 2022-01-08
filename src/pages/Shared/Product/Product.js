@@ -11,7 +11,7 @@ const Product = ({ name, product }) => {
 
     const { addStorage, getAllProductQuantity, getStorageData } = localeDB();
     const [CartProducts, setCartProducts] = useState(getStorageData())
-    const { setAllProductsQuantity } = useAuth();
+    const { setAllProductsQuantity } = useAuth().ProductsInfo;
     if (!product) {
         return <h2>loading</h2>
     }

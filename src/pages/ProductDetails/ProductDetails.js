@@ -15,7 +15,7 @@ const ProductDetails = () => {
     const { id } = useParams();
     const { addStorage, getAllProductQuantity, getStorageData } = localeDB();
     const [CartProducts, setCartProducts] = useState(getStorageData())
-    const { setAllProductsQuantity } = useAuth();
+    const { setAllProductsQuantity } = useAuth().ProductsInfo;
     const [product, setProduct] = useState(null);
     const [quantity, setQuantity] = useState(1);
 

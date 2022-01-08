@@ -11,7 +11,7 @@ import Footer from '../../Shared/Footer/Footer';
 const Cart = () => {
     const { getStorageData } = localeDB();
     const cartProducts = Object.keys(getStorageData());
-    const { myOrderProducts, setMyOrderProducts, allProductsQuantity, setTotalOrderQuantity } = useAuth();
+    const { myOrderProducts, setMyOrderProducts, allProductsQuantity, setTotalOrderQuantity } = useAuth().ProductsInfo;
     const myProducts = [];
 
 

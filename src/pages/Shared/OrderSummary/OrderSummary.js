@@ -3,7 +3,7 @@ import useAuth from '../../../hooks/useAuth';
 
 
 const OrderSummary = () => {
-    const { totalOrderQuantity, myOrderProducts, totalPrice, setTotalPrice, shippingCost, setShippingCost } = useAuth();
+    const { totalOrderQuantity, myOrderProducts, totalPrice, setTotalPrice, shippingCost, setShippingCost } = useAuth().ProductsInfo;
     const getTotalPrice = (myOrderProducts) => {
         let price = 0;
         myOrderProducts.forEach(product => {

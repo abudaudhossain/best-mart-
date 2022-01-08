@@ -5,7 +5,7 @@ import useAuth from '../../../hooks/useAuth';
 
 
 const TopNav = () => {
-  const {allProductsQuantity} = useAuth();
+  const {allProductsQuantity} = useAuth().ProductsInfo;
   console.log(allProductsQuantity)
   
    

@@ -4,7 +4,7 @@ import localeDB from '../../../utilities/localeDB';
 
 const CartItem = ({ productId }) => {
     const { getStorageData } = localeDB();
-    const { myOrderProducts, setMyOrderProducts, setTotalOrderQuantity, totalOrderQuantity} = useAuth();
+    const { myOrderProducts, setMyOrderProducts, setTotalOrderQuantity, totalOrderQuantity} = useAuth().ProductsInfo;
     const [product, setProduct] = useState(null);
     const [quantity, setQuantity] = useState(getStorageData()[productId]);
     const orderProducts = [...myOrderProducts];

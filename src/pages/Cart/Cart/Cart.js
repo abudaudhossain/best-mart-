@@ -43,11 +43,11 @@ const Cart = () => {
     }, [])
 
 
-    const hc = () => {
-        console.log(myOrderProducts);
+    const addHandlerSessionStorage = () => {
+        // console.log(myOrderProducts);
         sessionStorage.setItem("myOrderProducts", JSON.stringify(myOrderProducts))
     }
-    // console.log(op)
+    // console.log(cartProducts)
     return (
         <>
             <Navigation />
@@ -63,7 +63,7 @@ const Cart = () => {
                             <OrderSummary />
                             <Link to="/shippingPage">
 
-                                <button to="" onClick={hc} className="my-btn m-2">Go to shipping Page</button>
+                                <button to="" onClick={addHandlerSessionStorage} className="my-btn m-2">Go to shipping Page</button>
                             </Link>
                             <Link to="/home" className="m-2"><button className="my-btn">Continue Shopping</button></Link>
                         </Col>

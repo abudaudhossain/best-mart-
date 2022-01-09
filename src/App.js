@@ -12,6 +12,7 @@ import Orders from './pages/DashBoard/Orders/Orders';
 import Category from './pages/DashBoard/Category/Category';
 import ManagesProducts from './pages/DashBoard/ManageProducts/ManagesProducts';
 import LogIn from './pages/LogIn/Login/LogIn';
+import ClientView from './pages/ClientView/ClientView';
 
 
 
@@ -23,12 +24,15 @@ function App() {
       <BrowserRouter>
 
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/productDetails/:id" element={<ProductDetails />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/shippingPage" element={<ShippingPage />} />
-          <Route path="login" element={<LogIn />} />
+          <Route path="/" element={<ClientView />} >
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/productDetails/:id" element={<ProductDetails />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/shippingPage" element={<ShippingPage />} />
+            <Route path="/login" element={<LogIn />} />
+          </Route>
+
           <Route path="/dashboard" element={<DashBoard />}>
             <Route path="*" element={<DashBoardHome />} />
             <Route path="orders" element={<Orders />} />

@@ -50,7 +50,7 @@ const Cart = () => {
     // console.log(cartProducts)
     return (
         <>
-            <Navigation />
+            
             <section className="cart">
                 <Container>
                     <Row>
@@ -70,7 +70,7 @@ const Cart = () => {
                     </Row>
                 </Container>`
             </section>
-            <Footer />
+            
         </>
     );
 };

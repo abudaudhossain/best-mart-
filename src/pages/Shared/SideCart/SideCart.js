@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { Col, Nav, Offcanvas, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import localeDB from '../../../utilities/localeDB';
 import CartItem from '../../Cart/CartItem/CartItem';
@@ -30,8 +31,12 @@ const SideCart = () => {
                                 cartProducts.map(productId => <CartItem key={productId} productId={productId} />)
                             }
                         </Col>
+                        <Link to="/cart">
+                            <button className="my-btn">Cart Details</button>
+                        </Link>
                     </Row>
                 </Offcanvas.Body>
+
             </Offcanvas>
         </>
     );

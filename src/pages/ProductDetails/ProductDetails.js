@@ -5,8 +5,6 @@ import { Link, useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 import localeDB from '../../utilities/localeDB';
-import Footer from '../Shared/Footer/Footer';
-import Navigation from '../Shared/Navigation/Navigation';
 import MyImgMagnifier from './MyImgMagnifier/MyImgMagnifier';
 import "./ProductDetails.css";
 
@@ -58,12 +56,12 @@ const ProductDetails = () => {
     console.log(product)
     return (
         <>
-            <Navigation />
+
             <section className="product-details py-5">
                 <Container >
                     <Row>
                         <Col sm={12} md={6}>
-                            <MyImgMagnifier img={img}/>
+                            <MyImgMagnifier img={img} />
                         </Col>
                         <Col sm={12} md={6}>
                             <h3>{name}</h3>
@@ -103,7 +101,7 @@ const ProductDetails = () => {
                 </Container>
 
             </section>
-            <Footer />
+
         </>
     );
 };

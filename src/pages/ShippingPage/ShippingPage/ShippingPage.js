@@ -1,8 +1,6 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Footer from '../../Shared/Footer/Footer';
-import Navigation from '../../Shared/Navigation/Navigation';
 import OrderSummary from '../../Shared/OrderSummary/OrderSummary';
 import Address from '../Address/Address';
 // import useAuth from "../../../hooks/useAuth"
@@ -11,7 +9,6 @@ const ShippingPage = () => {
 
     return (
         <>
-            <Navigation />
             <section className="shipping-page">
                 <Container>
                     <Row>
@@ -32,7 +29,6 @@ const ShippingPage = () => {
                     </Row>
                 </Container>`
             </section>
-            <Footer />
         </>
     );
 };

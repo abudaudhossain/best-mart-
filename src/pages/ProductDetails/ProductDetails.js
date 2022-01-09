@@ -53,7 +53,7 @@ const ProductDetails = () => {
         setQuantity(parseInt(e.target.value))
     }
 
-    console.log(product)
+    // console.log(product)
     return (
         <>
 

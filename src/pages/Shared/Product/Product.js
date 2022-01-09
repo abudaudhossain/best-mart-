@@ -36,7 +36,7 @@ const Product = ({ name, product }) => {
                     <h4 title={name}>{name?.slice(0, 30)}...</h4>
                     <p className="item-price"><strike>${product.priceFraction}</strike> <span>${product.price}</span></p>
                     <Rating
-                        initialRating={product.star}
+                        initialRating={parseInt(product.star)}
                         readonly
 
                         fullSymbol={[<i className="color-gold fas fa-star"></i>]}

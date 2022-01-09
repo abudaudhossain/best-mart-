@@ -1,11 +1,13 @@
 import React from 'react';
+import "./Category.css"
 
-const Category = () => {
+const Category = ({category}) => {
+    // console.log(category)
     return (
         <div className="text-center">
-              <img src="https://cdn.shopify.com/s/files/1/0064/4435/1539/files/icon-tivi_1024x1024_crop_center.jpg?v=1616410673" alt="" />
+              <img className="category-img-area" src={category?.categoryImg} alt="categoryImage" />
             
-            <h6>Category Name</h6>
+            <h6>{category?.categoryName}</h6>
 
         </div>
     );

@@ -1,7 +1,6 @@
 import React from 'react';
-import Footer from '../../Shared/Footer/Footer';
-import Navigation from '../../Shared/Navigation/Navigation';
 import Banner from '../Banner/Banner';
+import BestProducts from '../BestProducts/BestProducts';
 import Categories from '../Categories/Categories';
 import OfferBanner from '../OfferBanner/OfferBanner';
 import OurBrands from '../OurBrands/OurBrands';
@@ -19,7 +18,7 @@ const Home = () => {
             <Products />
             <OfferBanner />
             <Categories />
-            <Products />
+            <BestProducts />
             <OurBrands />
             <Recommended />
             <Subscribe />

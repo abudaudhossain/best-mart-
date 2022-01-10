@@ -16,6 +16,7 @@ const Address = () => {
         orderInfo.products = OrderProducts;
         orderInfo.totalProducts = totalOrderQuantity;
         orderInfo.totalCost = totalPrice + shippingCost;
+        orderInfo.status = "pending";
         console.log(orderInfo);
         axios.post('http://localhost:5000/order', orderInfo)
             .then(function (response) {

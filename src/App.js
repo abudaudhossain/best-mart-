@@ -13,6 +13,7 @@ import Category from './pages/DashBoard/Category/Category';
 import ManagesProducts from './pages/DashBoard/ManageProducts/ManagesProducts';
 import LogIn from './pages/LogIn/Login/LogIn';
 import ClientView from './pages/ClientView/ClientView';
+import CategoryProducts from './pages/CategoryProducts/CategoryProducts';
 
 
 
@@ -31,6 +32,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/shippingPage" element={<ShippingPage />} />
             <Route path="/login" element={<LogIn />} />
+            <Route path="/categoryProducts/:category" element={<CategoryProducts />} />
           </Route>
 
           <Route path="/dashboard" element={<DashBoard />}>

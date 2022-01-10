@@ -5,18 +5,13 @@ import localeDB from '../../../utilities/localeDB';
 import OrderSummary from '../../Shared/OrderSummary/OrderSummary';
 import CartItem from '../CartItem/CartItem';
 import useAuth from '../../../hooks/useAuth'
-import Navigation from '../../Shared/Navigation/Navigation';
-import Footer from '../../Shared/Footer/Footer';
+
 
 const Cart = () => {
     const { getStorageData } = localeDB();
     const cartProducts = Object.keys(getStorageData());
     const { myOrderProducts, setMyOrderProducts, allProductsQuantity, setTotalOrderQuantity } = useAuth().ProductsInfo;
     const myProducts = [];
-
-
-
-
 
     //Cart item add to Order products
     useEffect(() => {
@@ -43,11 +38,13 @@ const Cart = () => {
     }, [])
 
 
+    //Order products add in sessionStorage
     const addHandlerSessionStorage = () => {
-        // console.log(myOrderProducts);
         sessionStorage.setItem("myOrderProducts", JSON.stringify(myOrderProducts))
     }
-    // console.log(cartProducts)
+
+    
+    
     return (
         <>
             

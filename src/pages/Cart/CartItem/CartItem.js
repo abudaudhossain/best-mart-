@@ -3,8 +3,8 @@ import useAuth from '../../../hooks/useAuth';
 import localeDB from '../../../utilities/localeDB';
 
 const CartItem = ({ productId }) => {
-    const { getStorageData } = localeDB();
-    const { myOrderProducts, setMyOrderProducts, setTotalOrderQuantity, totalOrderQuantity} = useAuth().ProductsInfo;
+    const { getStorageData, getAllProductQuantity, handleDeleteItem } = localeDB();
+    const { myOrderProducts, setMyOrderProducts, setTotalOrderQuantity, totalOrderQuantity, setAllProductsQuantity} = useAuth().ProductsInfo;
     const [product, setProduct] = useState(null);
     const [quantity, setQuantity] = useState(getStorageData()[productId]);
     const orderProducts = [...myOrderProducts];
@@ -18,9 +18,7 @@ const CartItem = ({ productId }) => {
             .then(data => setProduct(data));
 
         setMyOrderProducts(orderProducts);
-        console.log("success", orderProducts);
-        
-        
+              
 
     }, [quantity])
 
@@ -31,7 +29,7 @@ const CartItem = ({ productId }) => {
         setQuantity(quantity + 1);
         setTotalOrderQuantity(totalOrderQuantity + 1)
         orderProduct.quantity = quantity;
-        // console.log(orderProduct.quantity)
+        console.log(getAllProductQuantity())
 
     }
 
@@ -71,6 +69,18 @@ const CartItem = ({ productId }) => {
 
     }
 
+    //========================================//
+    //===== handle delete cart item =======//
+    //========================================//
+    const handleCartItemDelete = (id) =>{
+       const remendProducts =  myOrderProducts.filter(product => product.productId !== id);
+       setMyOrderProducts(remendProducts);
+       handleDeleteItem(id);
+       setTotalOrderQuantity(getAllProductQuantity());
+       setAllProductsQuantity(getAllProductQuantity());
+       
+    } 
+
     return (
         <div className="d-flex justify-content-between align-items-center flex-wrap m-3 p-3 border">
             <div className="d-flex align-items-center">
@@ -94,6 +104,9 @@ const CartItem = ({ productId }) => {
             <div>
                 <h5>Total Price</h5>
                 <h5>$ {orderProduct.totalPrice}</h5>
+            </div>
+            <div>
+                <button onClick={() => handleCartItemDelete(productId)} className="my-btn">Delete</button>
             </div>
         </div>
     );

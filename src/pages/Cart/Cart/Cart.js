@@ -19,7 +19,7 @@ const Cart = () => {
         cartProducts.forEach(async productId => {
             // let product;
             const quantity = await getStorageData()[productId];
-            let res = await fetch(`https://bestmart.herokuapp.com/products/${productId}`);
+            let res = await fetch(`https://bestmart.herokuapp.com/product/${productId}`);
             let data = await res.json();
             const { price } = await data;
             const orderProduct = await {

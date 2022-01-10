@@ -13,7 +13,7 @@ const CartItem = ({ productId }) => {
     //=====Load product in server by product id=======//
     //=================================================== 
     useEffect(() => {
-        fetch(`https://bestmart.herokuapp.com/products/${productId}`)
+        fetch(`https://bestmart.herokuapp.com/product/${productId}`)
             .then(res => res.json())
             .then(data => setProduct(data));
 
@@ -88,7 +88,7 @@ const CartItem = ({ productId }) => {
                     <img src={img} alt="product-img" className='img-fluid' />
                 </div>
                 <div className="mx-3">
-                    <h4 title={name}>{name.slice(0, 25)}</h4>
+                    <h4 title={name}>{name?.slice(0, 25)}</h4>
                     <h4>{quantity}
                         <button onClick={increasesQuantity} className="my-btn m-2"> + </button>
                         <button onClick={decreasesQuantity} className="my-btn m-2"> - </button>

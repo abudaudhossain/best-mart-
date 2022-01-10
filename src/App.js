@@ -14,6 +14,9 @@ import ManagesProducts from './pages/DashBoard/ManageProducts/ManagesProducts';
 import LogIn from './pages/LogIn/Login/LogIn';
 import ClientView from './pages/ClientView/ClientView';
 import CategoryProducts from './pages/CategoryProducts/CategoryProducts';
+import AllProducts from './pages/AllProducts/AllProducts';
+import MyOrder from './pages/MyOrder/MyOrder';
+import Contact from './pages/Contact/Contact';
 
 
 
@@ -33,6 +36,9 @@ function App() {
             <Route path="/shippingPage" element={<ShippingPage />} />
             <Route path="/login" element={<LogIn />} />
             <Route path="/categoryProducts/:category" element={<CategoryProducts />} />
+            <Route path="/products" element={<AllProducts />} />
+            <Route path="/myOrder" element={<MyOrder />} />
+            <Route path="/contact" element={<Contact />} />
           </Route>
 
           <Route path="/dashboard" element={<DashBoard />}>

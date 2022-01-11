@@ -12,7 +12,7 @@ const DashBoard = () => {
                 <Col lg={3} style={{ background: "#161880"}} className="d-none d-lg-block p-0 h-100">
                     <DashBoardSideNav />
                 </Col>
-                <Col sm={12} lg={9} style={{ background: "blue"}}>
+                <Col sm={12} lg={9} >
 
                     <Outlet />
                 </Col>

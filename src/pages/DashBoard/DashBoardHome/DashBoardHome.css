@@ -1,0 +1,31 @@
+.order-card{
+    position: relative;
+    align-items: center;
+    background: white;
+    padding: 12px 16px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.order-card .icon-container{
+    background: #070eff29;
+    padding: 12px 14px;
+    font-size: 24px;
+    border-radius: 50%;
+    text-align: center;
+    color: #098dfe;
+}
+.cart-text{
+    margin-left: 10px;
+}
+.cart-text p{
+    margin: 0;
+    font-size: 16px;
+    
+}
+.cart-text h4{
+    margin: 0;
+    font-weight: 700;
+    font-size: 28px;
+    
+}

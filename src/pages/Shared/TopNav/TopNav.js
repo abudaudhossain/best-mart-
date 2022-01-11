@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
-import LogIn from '../../LogIn/Login/LogIn';
+import LogInPopUp from '../../LogIn/LoginPopUp/LogInPopUp';
 import SideCart from '../SideCart/SideCart';
 
 
@@ -37,7 +37,7 @@ const TopNav = () => {
                             user?.email ?
                                 <button onClick={logOut} lassName="btn mx-3" style={{ background: "#23CB77", color: "#fff" }}>Log Out</button>
                                 :
-                                <LogIn />
+                                <LogInPopUp />
                         }
                         <Navbar.Text>
 

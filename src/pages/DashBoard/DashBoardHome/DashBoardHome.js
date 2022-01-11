@@ -1,10 +1,16 @@
 import React from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 
 const DashBoardHome = () => {
     return (
-        <div>
-            <h1>Dash Board home</h1>
-        </div>
+        <section>
+            <Container>
+                <h3>Dash Board home</h3>
+                <Row>
+                    <Col></Col>
+                </Row>
+            </Container>
+        </section>
     );
 };
 

@@ -1,0 +1,20 @@
+.form-container{
+    background: #d6d6d6a1;
+    max-width: 500px;
+    border-radius: 25px;
+    
+}
+.icon-container{
+    background: #f8f8f8;
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 50px;
+    font-size: 18px;
+    color: #f63c04;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+.icon-container:hover{
+    background: #f63c04;
+    color: #f8f8f8 !important;
+}

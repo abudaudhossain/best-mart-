@@ -18,7 +18,7 @@ const ProductDetails = () => {
     const [quantity, setQuantity] = useState(1);
 
     useEffect(() => {
-        fetch(`https://bestmart.herokuapp.com/products/${id}`)
+        fetch(`https://bestmart.herokuapp.com/product/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data));
         if (CartProducts[id]) {

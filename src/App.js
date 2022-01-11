@@ -11,12 +11,14 @@ import Users from './pages/DashBoard/Users/Users';
 import Orders from './pages/DashBoard/Orders/Orders';
 import Category from './pages/DashBoard/Category/Category';
 import ManagesProducts from './pages/DashBoard/ManageProducts/ManagesProducts';
-import LogIn from './pages/LogIn/Login/LogIn';
 import ClientView from './pages/ClientView/ClientView';
 import CategoryProducts from './pages/CategoryProducts/CategoryProducts';
 import AllProducts from './pages/AllProducts/AllProducts';
 import MyOrder from './pages/MyOrder/MyOrder';
 import Contact from './pages/Contact/Contact';
+import LogInPage from './pages/LogIn/LogInPage/LogInPage';
+import Register from './pages/LogIn/Register/Register';
+import LogIn from './pages/LogIn/LogIn/LogIn';
 
 
 
@@ -34,7 +36,10 @@ function App() {
             <Route path="/productDetails/:id" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/shippingPage" element={<ShippingPage />} />
-            <Route path="/login" element={<LogIn />} />
+            <Route path="/login" element={<LogInPage />} >
+              <Route path="" element={<LogIn/>} />
+              <Route path="register" element={<Register />} />
+            </Route>
             <Route path="/categoryProducts/:category" element={<CategoryProducts />} />
             <Route path="/products" element={<AllProducts />} />
             <Route path="/myOrder" element={<MyOrder />} />
@@ -42,13 +47,13 @@ function App() {
           </Route>
 
           <Route path="/dashboard" element={<DashBoard />}>
-            <Route path="*" element={<DashBoardHome />} />
+            <Route path="" element={<DashBoardHome />} />
             <Route path="orders" element={<Orders />} />
             <Route path="users" element={<Users />} />
             <Route path="category" element={<Category />} />
             <Route path="managesProducts" element={<ManagesProducts />} />
             <Route path="users" element={<Users />} />
-            {/* <Route path="*" element={<Dashboard />} /> */}
+            <Route path="*" element={<DashBoardHome />} />
 
           </Route>
 

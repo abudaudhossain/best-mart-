@@ -46,7 +46,7 @@ const Recommended = () => {
                         }}
                     >
                         {
-                           products?.slice(70, 90).map(product =><Product product={product} />) 
+                           products?.slice(70, 90).map(product =><Product key={product.key} product={product} />) 
                         }
                     </OwlCarousel>
 

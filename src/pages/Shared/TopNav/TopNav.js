@@ -3,13 +3,15 @@ import { Button, Container, Form, FormControl, Nav, Navbar } from 'react-bootstr
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import LogInPopUp from '../../LogIn/LoginPopUp/LogInPopUp';
+import Profile from '../Profile/Profile';
 import SideCart from '../SideCart/SideCart';
+import "./TopNav.css"
 
 
 const TopNav = () => {
-    const { allProductsQuantity } = useAuth().ProductsInfo;
-    const { user, logOut } = useAuth().firebaseInfo;
-    console.log(allProductsQuantity)
+    // const { allProductsQuantity } = useAuth().ProductsInfo;
+    const { user } = useAuth().firebaseInfo;
+    // console.log(allProductsQuantity)
 
 
     return (
@@ -30,19 +32,12 @@ const TopNav = () => {
                         <Button variant="outline-success">Search</Button>
                     </Form>
                     <Nav className="ms-auto" style={{ flexDirection: "row" }}>
-
-
-
                         {
                             user?.email ?
-                                <button onClick={logOut} lassName="btn mx-3" style={{ background: "#23CB77", color: "#fff" }}>Log Out</button>
+                                <Profile />
                                 :
                                 <LogInPopUp />
                         }
-                        <Navbar.Text>
-
-
-                        </Navbar.Text>
                         <SideCart />
 
 

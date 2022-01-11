@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import "./Category.css"
 
 const Category = ({ category }) => {
-    console.log(category)
+    
     return (
         <div className="text-center">
             <Link to={`/categoryProducts/${category.categoryName}`}>

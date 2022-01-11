@@ -103,7 +103,7 @@ const useFirebase = () => {
     // == ====== add New user DB ======= ==//
     //=====================================//
     const addNewUserToDB = (newUser) => {
-        axios.post('http://localhost:5000/addUser', newUser)
+        axios.post('https://bestmart.herokuapp.com/addUser', newUser)
             .then(function (response) {
                 // console.log(response);
             })
@@ -114,7 +114,7 @@ const useFirebase = () => {
 
     //check user in database
     const isAddUser = (email, addUser) => {
-        fetch(`http://localhost:5000/user/${email}`)
+        fetch(`https://bestmart.herokuapp.com/user/${email}`)
             .then(res => res.json())
             .then(data => {
                 if (data.length === 0) {

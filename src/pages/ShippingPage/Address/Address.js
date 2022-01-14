@@ -17,6 +17,7 @@ const Address = () => {
         orderInfo.totalProducts = totalOrderQuantity;
         orderInfo.totalCost = totalPrice + shippingCost;
         orderInfo.status = "pending";
+        orderInfo.paymentStatus = "pending";
         console.log(orderInfo);
         axios.post('https://bestmart.herokuapp.com/order', orderInfo)
             .then(function (response) {

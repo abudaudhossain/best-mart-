@@ -14,11 +14,12 @@ import ManagesProducts from './pages/DashBoard/ManageProducts/ManagesProducts';
 import ClientView from './pages/ClientView/ClientView';
 import CategoryProducts from './pages/CategoryProducts/CategoryProducts';
 import AllProducts from './pages/AllProducts/AllProducts';
-import MyOrder from './pages/MyOrder/MyOrder';
 import Contact from './pages/Contact/Contact';
 import LogInPage from './pages/LogIn/LogInPage/LogInPage';
 import Register from './pages/LogIn/Register/Register';
 import LogIn from './pages/LogIn/LogIn/LogIn';
+import MyOrders from './pages/MyOrders/MyOrders/MyOrders';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 
 
@@ -34,28 +35,33 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/productDetails/:id" element={<ProductDetails />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/shippingPage" element={<ShippingPage />} />
             <Route path="/login" element={<LogInPage />} >
-              <Route path="" element={<LogIn/>} />
+              <Route path="" element={<LogIn />} />
               <Route path="register" element={<Register />} />
             </Route>
             <Route path="/categoryProducts/:category" element={<CategoryProducts />} />
             <Route path="/products" element={<AllProducts />} />
-            <Route path="/myOrder" element={<MyOrder />} />
-            <Route path="/contact" element={<Contact />} />
+
+            <Route path="/" element={<PrivateRoute />} >
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/shippingPage" element={<ShippingPage />} />
+              <Route path="/myOrder" element={<MyOrders />} />
+              <Route path="/contact" element={<Contact />} />
+            </Route>
+          </Route>
+          <Route path="/" element={<PrivateRoute />} >
+            <Route path="/dashboard" element={<DashBoard />}>
+              <Route path="" element={<DashBoardHome />} />
+              <Route path="orders" element={<Orders />} />
+              <Route path="users" element={<Users />} />
+              <Route path="category" element={<Category />} />
+              <Route path="managesProducts" element={<ManagesProducts />} />
+              <Route path="users" element={<Users />} />
+              <Route path="*" element={<DashBoardHome />} />
+
+            </Route>
           </Route>
 
-          <Route path="/dashboard" element={<DashBoard />}>
-            <Route path="" element={<DashBoardHome />} />
-            <Route path="orders" element={<Orders />} />
-            <Route path="users" element={<Users />} />
-            <Route path="category" element={<Category />} />
-            <Route path="managesProducts" element={<ManagesProducts />} />
-            <Route path="users" element={<Users />} />
-            <Route path="*" element={<DashBoardHome />} />
-
-          </Route>
 
 
         </Routes>

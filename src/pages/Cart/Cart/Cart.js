@@ -21,15 +21,17 @@ const Cart = () => {
             const quantity = await getStorageData()[productId];
             let res = await fetch(`https://bestmart.herokuapp.com/product/${productId}`);
             let data = await res.json();
-            const { price } = await data;
+            const { price , name, img} = await data;
             const orderProduct = await {
                 productId,
                 quantity,
                 price,
+                name,
+                img,
                 totalPrice: price * quantity
             }
             await myProducts.push(orderProduct);
-            // console.log(myProducts)
+            console.log(myProducts)
             await setMyOrderProducts(myProducts)
 
 

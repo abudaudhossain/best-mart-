@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Col, Nav, Offcanvas, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -7,10 +7,40 @@ import localeDB from '../../../utilities/localeDB';
 import CartItem from '../../Cart/CartItem/CartItem';
 
 const SideCart = () => {
+    const [show, setShow] = useState(false);
+   
     const { getStorageData } = localeDB();
     const cartProducts = Object.keys(getStorageData());
-    const [show, setShow] = useState(false);
-    const { allProductsQuantity } = useAuth().ProductsInfo;
+    const {  setMyOrderProducts, allProductsQuantity, setTotalOrderQuantity } = useAuth().ProductsInfo;
+    const myProducts = [];
+
+    //Cart item add to Order products
+    useEffect(() => {
+        setTotalOrderQuantity(allProductsQuantity)
+        cartProducts.forEach(async productId => {
+            // let product;
+            const quantity = await getStorageData()[productId];
+            let res = await fetch(`https://bestmart.herokuapp.com/product/${productId}`);
+            let data = await res.json();
+            const { price } = await data;
+            const orderProduct = await {
+                productId,
+                quantity,
+                price,
+                totalPrice: price * quantity
+            }
+            await myProducts.push(orderProduct);
+            // console.log(myProducts)
+            await setMyOrderProducts(myProducts)
+
+
+        });
+
+    }, [])
+
+
+    
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     return (

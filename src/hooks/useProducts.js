@@ -7,20 +7,6 @@ const useProducts = () => {
     let productCategory = [];
     const categories = [];
 
-    //======================================//
-    // ==  add order Products in local DB ==//
-    //=====================================//
-    useEffect(() => {
-        if (myOrderProducts.length > 1) {
-            const cart_item = {};
-            myOrderProducts.map(product => cart_item[product.productId] = product.quantity)
-            console.log("Saved local", cart_item)
-            localStorage.setItem("addToCartProduct", JSON.stringify(cart_item));
-            setAllProductsQuantity(getAllProductQuantity());
-        }
-
-    }, [myOrderProducts])
-
     //================================//
     // ==  load all products ==//
     //================================//

@@ -8,7 +8,7 @@ import useAuth from '../../../hooks/useAuth'
 
 
 const Cart = () => {
-    const { getStorageData } = localeDB();
+    const { getStorageData } = localeDB();  
     const cartProducts = Object.keys(getStorageData());
     const { myOrderProducts, setMyOrderProducts, allProductsQuantity, setTotalOrderQuantity } = useAuth().ProductsInfo;
     const myProducts = [];

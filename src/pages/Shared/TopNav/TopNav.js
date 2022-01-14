@@ -40,7 +40,9 @@ const TopNav = () => {
                         }
                         <SideCart />
 
-
+                        {/* <Nav.Link as={Link} to="/cart" style={{ color: "white", textAlign: "center" }} className="position-relative">
+                            <i className="fas fa-shopping-cart" style={{ fontSize: "32px", display: "block" }}></i> <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">{allProductsQuantity}</span>
+                        </Nav.Link> */}
                     </Nav>
 
 

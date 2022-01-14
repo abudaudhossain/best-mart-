@@ -3,7 +3,8 @@ import useAuth from '../../../hooks/useAuth';
 import localeDB from '../../../utilities/localeDB';
 
 const CartItem = ({ productId }) => {
-    const { getStorageData, getAllProductQuantity, handleDeleteItem } = localeDB();
+
+    const { getStorageData, getAllProductQuantity, handleDeleteItem, addStorage } = localeDB();
     const { myOrderProducts, setMyOrderProducts, setTotalOrderQuantity, totalOrderQuantity, setAllProductsQuantity} = useAuth().ProductsInfo;
     const [product, setProduct] = useState(null);
     const [quantity, setQuantity] = useState(getStorageData()[productId]);
@@ -25,21 +26,24 @@ const CartItem = ({ productId }) => {
     //========================================//
     //===== increases product quantity =======//
     //========================================// 
-    const increasesQuantity = () => {
+    const increasesQuantity = (id) => {
         setQuantity(quantity + 1);
+        addStorage(id, quantity + 1)
         setTotalOrderQuantity(totalOrderQuantity + 1)
         orderProduct.quantity = quantity;
-        console.log(getAllProductQuantity())
+        setAllProductsQuantity(getAllProductQuantity());
 
     }
 
     //========================================//
     //===== decrease product quantity =======//
     //========================================// 
-    const decreasesQuantity = () => {
+    const decreasesQuantity = (id) => {
         if (quantity > 1) {
             setQuantity(quantity - 1);
+            addStorage(id, quantity - 1);
             setTotalOrderQuantity(totalOrderQuantity - 1)
+            setAllProductsQuantity(getAllProductQuantity());
         }
     }
     //========================================//
@@ -90,8 +94,8 @@ const CartItem = ({ productId }) => {
                 <div className="mx-3">
                     <h4 title={name}>{name?.slice(0, 25)}</h4>
                     <h4>{quantity}
-                        <button onClick={increasesQuantity} className="my-btn m-2"> + </button>
-                        <button onClick={decreasesQuantity} className="my-btn m-2"> - </button>
+                        <button onClick={()=>increasesQuantity(productId)} className="my-btn m-2"> + </button>
+                        <button onClick={() =>decreasesQuantity(productId)} className="my-btn m-2"> - </button>
                     </h4>
                 </div>
             </div>
